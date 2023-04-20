@@ -1,14 +1,29 @@
 # app root
 
 from app import app
-
 from flask import Flask, render_template, request
 from wtforms import Form, TextAreaField, validators
+from app.controller import loginController
 
 class ReviewForm(Form):
     jobreview = TextAreaField('',
                                 [validators.DataRequired(),
                                 validators.length(min=15)])
+
+@app.route('/login',methods=['GET'])
+def login():
+    return loginController.login()
+      
+@app.route('/register',methods=['POST'])
+def register():
+    if request.method == 'POST':
+        email = request.form['email']
+        username = request.form['username']
+        password = request.form['password']
+
+        return loginController.register(email,username,password);
+    else:
+        return "failed"
 
 @app.route('/')
 def index():
