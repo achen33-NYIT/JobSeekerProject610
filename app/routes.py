@@ -1,6 +1,7 @@
 # app root
 
 from app import app
+from repos.api import ChatGPT
 
 from flask import Flask, render_template, request
 from wtforms import Form, TextAreaField, validators
@@ -10,19 +11,25 @@ class ReviewForm(Form):
                                 [validators.DataRequired(),
                                 validators.length(min=15)])
 
-@app.route('/')
+# TODO: store in central datastore or call from API directly
+results = [
+    {"role": "system", "content": "You recommend jobs to job candidates based on their skills"}
+]
+
+
+@app.route('/', methods=['POST', 'GET'])
 def index():
-    form = ReviewForm(request.form)
-    return render_template('reviewform.html', form=form)
+    results = None
+    if request.method == 'GET':
+        # Use the list of all languages
+        results = [
+            {"role": "system", "content": "You recommend jobs to job candidates based on their skills"}
+            ]
+    elif request.method == 'POST':
+        # Use the languages we selected in the request form
+        user_input = request.form["variable"]
 
-@app.route('/results', methods=['POST'])
-def results():
-    form = ReviewForm(request.form)
-    if request.method == 'POST' and form.validate():
-        review = request.form['jobreview']
-        return render_template('results.html')
-    return render_template('reviewform.html', form=form)
-
-@app.route('/thanks', methods=['POST'])
-def feedback():
-    return render_template('thanks.html')
+        results = ChatGPT(user_input)
+        
+        
+    return render_template('index.html', results=results)
