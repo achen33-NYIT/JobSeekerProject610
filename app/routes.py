@@ -10,18 +10,25 @@ class ReviewForm(Form):
                                 [validators.DataRequired(),
                                 validators.length(min=15)])
 
-@app.route('/login',methods=['GET'])
+@app.route('/login',methods=['POST'])
 def login():
-    return loginController.login()
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        
+        return loginController.login(email,password);
+    else:
+        return "failed"
       
 @app.route('/register',methods=['POST'])
 def register():
     if request.method == 'POST':
         email = request.form['email']
-        username = request.form['username']
         password = request.form['password']
-
-        return loginController.register(email,username,password);
+        fname = request.form['fname']
+        lname = request.form['lname']
+        
+        return loginController.register(fname,lname,email,password);
     else:
         return "failed"
 
