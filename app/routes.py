@@ -1,6 +1,7 @@
 # app root
 
 from app import app
+from repos.api import ChatGPT
 from flask import Flask, jsonify, render_template, request
 from wtforms import Form, TextAreaField, validators
 from app.controller import loginController,ResumeController
@@ -65,3 +66,16 @@ def results():
 @app.route('/thanks', methods=['POST'])
 def feedback():
     return render_template('thanks.html')
+
+
+@app.route('/chatgpt',methods=["POST"])
+def chatgpt():
+    if request.method == 'POST':
+        # Use the languages we selected in the request form
+        user_input = request.get_json()['jobtitle'];
+        print(user_input)
+        str = "suggest me skills required for " + user_input
+        results = ChatGPT(str)
+
+        print(jsonify(results))
+        return jsonify(results)

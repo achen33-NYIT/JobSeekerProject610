@@ -12,6 +12,7 @@ from sklearn.neighbors import NearestNeighbors
 from os.path import relpath
 import spacy 
 nlp = spacy.load('en_core_web_sm')
+from json import loads, dumps
 
 
 stopw  = set(stopwords.words('english'))
@@ -90,7 +91,9 @@ def submit_data(files):
         matches = pd.DataFrame(matches, columns=['Match confidence'])
         df1['match']=matches['Match confidence']
         df=df1.sort_values('match',ascending=False)
-        print(df[['jobtitle','skills','jobdescription','match']])
-        print(type(df))
-
-        return "works"
+        df2 = df[['company','employmenttype_jobstatus','jobtitle','skills','jobdescription','joblocation_address','advertiserurl']].head(30)
+        
+        res  = df2.to_json(orient="split")
+        parsed = loads(res)
+        res = dumps(parsed, indent=4)
+        return res

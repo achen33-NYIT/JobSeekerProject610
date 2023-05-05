@@ -1,0 +1,51 @@
+17 lennon pl, Clifton, NJ 07013  | (862) -882-1152  | sdungarani1@gmail.com  | https://www.linkedin.com/in/shubh -dungarani  
+Profile  
+As a highly motivated individual who is always eager to learn and grow  ,seeking a role that provides 
+opportunities for professional development and the support of senior colleagues. With a strong desire to expand 
+my knowledge and skills, excited to collaborate with experienced professionals and contribute to the success of 
+the team . 
+Skills & Abilities  
+· Front -End Programming: HTML5, CSS3, AJAX  
+· Databases: Mysql, MongoDB  
+· API Design and Development  
+· Source and Version Control: Github, bitbucket  · RDMS Development and SQL  
+· Express JS, Node JS, Angular JS.  
+· Android Application Development (Java).  
+· Back -End and Database Skills  
+Experience  
+FULL STACK INTERN  | CODESKET PVT LTD  | JANUARY 2022 – AUGUST 2022  
+• Designed and implemented a responsive front -end web interface for remote monitoring and control of autonomous 
+vehicle  systems, reducing on -site troubleshooting time and improving efficiency.  
+• Collaborated with senior developers and designers to develop and implement a business plan application using 
+modern front -end technologies such as HTML, SCSS, and AngularJS, and back -end technologies such as NodeJS.  
+• Demonstrated proficiency in writing production -ready code for both front -end and back -end frameworks, utilizing 
+modern tools and techniques.  
+• Assisted in coding and testing full -stack web applications using AngularJS and NodeJS, ensuring quality and 
+functionality of the final product.  
+ANDROID APPLICATION DEVELOPMENT INTERN  | BRAINY BEAMS PVT .LTD  | MAY 2021 – 
+JUNE 2021  
+• Successfully created custom mobile applications using Retrofit 2.0 REST API handler, improv ing the efficiency of 
+data retrieval and communication in the applications.  
+• Applied effective bug -tracking techniques, resulting in the prompt resolution of issues and smooth functioning of 
+applications.  
+• Conducted comprehensive testing of applications, identifying and resolving issues, and ensuring functionality and 
+performance met the required standards.  
+DATABASE ADMINISTRATOR INTERN |  CRIME BRANCH, AHMEDABAD |  JANUARY 2021 – 
+MAY 2021  
+• Developed stored procedures and triggers in MySQL to automate data up dates and improve data integrity  
+• Implemented joint operations and optimized SQL queries to improve database performance  
+• Collaborated with cross -functional teams to analyze business requirements and develop effective database solutions  
+• Assisted in data migr ation projects, updating and migrating data from legacy systems to new databases  
+• Conducted database testing and quality assurance to ensure data accuracy and system functionality . 
+Education  
+MASTERS OF SCIENCE IN COMPUTER SCIENCE  | EXPECTED IN MAY 2024  
+NEW YORK INSTITUTE OF TECHNOLOGY, MANHATTAN  
+PROJECTS: BEST DEAL FINDER, APPLICATION TRACKING SYSTEM.  
+BACHELORS OF ENGINEERING IN COMPUTER ENGINEERING  | MAY 2022  
+GUJARAT TECHNOLOGICAL UNIVERSITY, INDIA  
+PROJECTS: EMPLOYEE 360, TODO LIST, LAWYER PORTAL  (SSIP HACKATHON),  TASK TRACKER . 
+DIPLOMA OF ENGINEERING IN COMPUTER ENGINEERING  | MAY 2019    
+STBS COLLEGE OF DIPLOMA ENGINEERING , INDIA  
+PROJECTS: INTEGRATED SKILL SURVEY SYSTEM.  
+ 
+“I hereby declare that all the above information is correct and accurate.” – Shubhkumar Dungarani  Shubhkumar Dungarani  
