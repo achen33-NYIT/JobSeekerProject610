@@ -1,6 +1,9 @@
 # app root
 
 from app import app
+from repos.api import ChatGPT
+
+from flask import Flask, render_template, request
 from flask import Flask, jsonify, render_template, request
 from wtforms import Form, TextAreaField, validators
 from app.controller import loginController,ResumeController
@@ -14,13 +17,20 @@ class ReviewForm(Form):
                                 [validators.DataRequired(),
                                 validators.length(min=15)])
 
+# TODO: store in central datastore or call from API directly
+results = [
+    {"role": "system", "content": "You recommend jobs to job candidates based on their skills"}
+]
+
+
+# @app.route('/', methods=['POST', 'GET'])
 @app.route('/login',methods=['POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
         
-        return loginController.login(email,password);
+        return loginController.login(email,password)
     else:
         return "failed"
       
@@ -32,14 +42,24 @@ def register():
         fname = request.form['fname']
         lname = request.form['lname']
         
-        return loginController.register(fname,lname,email,password);
+        return loginController.register(fname,lname,email,password)
     else:
         return "failed"
 
-@app.route('/')
+@app.route('/chatgpt', methods=['POST'])
 def index():
-    form = ReviewForm(request.form)
-    return render_template('reviewform.html', form=form)
+    results = None
+    if request.method == 'GET':
+        # Use the list of all languages
+        results = [
+            {"role": "system", "content": "You recommend jobs to job candidates based on their skills"}
+            ]
+    elif request.method == 'POST':
+        # Use the languages we selected in the request form
+        user_input = request.form["variable"]
+
+        results = ChatGPT(user_input)
+    return render_template('index.html', results=results)
 
 @app.route('/upload', methods=['POST'])
 def upload_resume():
