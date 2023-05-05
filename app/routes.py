@@ -1,27 +1,38 @@
 # app root
 
 from app import app
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 from wtforms import Form, TextAreaField, validators
-from app.controller import loginController
+from app.controller import loginController,ResumeController
+from flask_cors import CORS
 
+app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app)
 class ReviewForm(Form):
     jobreview = TextAreaField('',
                                 [validators.DataRequired(),
                                 validators.length(min=15)])
 
-@app.route('/login',methods=['GET'])
+@app.route('/login',methods=['POST'])
 def login():
-    return loginController.login()
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        
+        return loginController.login(email,password);
+    else:
+        return "failed"
       
 @app.route('/register',methods=['POST'])
 def register():
     if request.method == 'POST':
         email = request.form['email']
-        username = request.form['username']
         password = request.form['password']
-
-        return loginController.register(email,username,password);
+        fname = request.form['fname']
+        lname = request.form['lname']
+        
+        return loginController.register(fname,lname,email,password);
     else:
         return "failed"
 
@@ -30,6 +41,19 @@ def index():
     form = ReviewForm(request.form)
     return render_template('reviewform.html', form=form)
 
+@app.route('/upload', methods=['POST'])
+def upload_resume():
+    upload_resume = request.files['file']
+    print(upload_resume)
+    if upload_resume.filename != '':
+        upload_resume.save(upload_resume.filename)
+        res = ResumeController.submit_data(upload_resume.filename)
+        return res
+    else:
+        print("no file")
+        res.emptyFile = True
+        return res
+    
 @app.route('/results', methods=['POST'])
 def results():
     form = ReviewForm(request.form)
